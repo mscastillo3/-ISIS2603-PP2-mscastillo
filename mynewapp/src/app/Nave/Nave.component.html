@@ -1,0 +1,47 @@
+<div class="container">
+<div class="row">
+  <div>
+    <div class="col">
+    <p >Naves Rebelión:</p>
+    <p [textContent]="rebelion"></p>
+  </div>
+    <div class="col">
+    <p >Naves Imperio:</p>
+    
+    <p [textContent]="imperio"></p>
+  </div>
+    <div class="col">
+    <p >Naves Neutrales:</p>
+    <p [textContent]="neutral"></p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+  <div class="col">
+    <div class = "row">
+    <div class="col mb-2" *ngFor="let nave of naves">
+      <div class="card p-2" style="width: 15rem; height: 33rem">
+        <img
+          class="card-img-top"
+          src="{{ nave.imagen }}"
+          alt="{{ nave.nombre }}"
+          (click)="onSelected(nave)"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{ nave.nombre }}</h4>
+          <h5 class="card-title">{{ nave.empresa_fabricacion }}</h5>
+          <p class="card-text">{{ nave.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "col">
+    <div *ngIf="selected">
+      <app-Detalle [naveDetail]="selectedNave"></app-Detalle>
+    </div>
+  </div>
+</div>
+</div>
